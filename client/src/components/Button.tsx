@@ -9,8 +9,9 @@ const StyledButton = styled.button<{ $intent?: ButtonIntent; $rounded?: boolean 
     justify-content: center;
     align-items: center;
 
-    width: 25px;
+    min-width: 20px;
     height: 25px;
+    padding-inline: 2px;
 
     background-color: ${(props) =>
         props.$intent === "primary"

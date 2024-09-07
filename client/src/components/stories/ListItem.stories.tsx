@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { ListItem } from "../ListItem";
 
@@ -20,6 +20,6 @@ export const ToDo: Story = {
 export const Done: Story = {
     args: {
         ...ToDo.args,
-        checked: true,
+        isDone: true,
     },
 };

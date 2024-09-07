@@ -10,7 +10,7 @@ const ListStyled = styled.div`
     gap: 0.5rem;
 `;
 
-const ListNoItems = styled.div`
+export const ListNoItems = styled.div`
     display: flex;
     flex: auto;
     gap: 0.5rem;
