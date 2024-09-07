@@ -1,18 +1,15 @@
-import { Container } from "./components/Container";
-import { Layout } from "./components/Layout";
-import { List } from "./components/List";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Todo } from "./components/Todo";
 import { ThemeProvider } from "./components/providers/ThemeProvider";
 
-export const App = () => (
-    <ThemeProvider>
-        <Container>
-            <Layout>
-                <Header onItemAdd={() => console.warn("unimplemented")}>To Do app</Header>
-                <List />
-                <Footer />
-            </Layout>
-        </Container>
-    </ThemeProvider>
-);
+const queryClient = new QueryClient();
+
+export const App = () => {
+    return (
+        <ThemeProvider>
+            <QueryClientProvider client={queryClient}>
+                <Todo />
+            </QueryClientProvider>
+        </ThemeProvider>
+    );
+};
