@@ -32,7 +32,11 @@ export const Form = (props: FormProps) => {
                 onCancel();
             }}
         >
-            <Input value={inputValue} onValueChange={(value) => setInputValue(value)} />
+            <Input
+                value={inputValue}
+                onValueChange={(value) => setInputValue(value)}
+                isHighlighted={initialValue !== "" && initialValue !== inputValue}
+            />
             <Button type="reset">
                 <Cross1Icon />
             </Button>
