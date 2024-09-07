@@ -5,7 +5,23 @@ import { Header } from "./Header";
 import { Layout } from "./Layout";
 import { List } from "./List";
 import { Spinner } from "./Spinner";
+import type { TodoItem } from "./api/TodoApi";
 import { useCreateTodoItem, useTodoItems } from "./hooks/useTodoHooks";
+
+const compareTodoItems = (todoA: TodoItem, todoB: TodoItem) => {
+    if (todoA.isDone && !todoB.isDone) {
+        return 1;
+    }
+    if (!todoA.isDone && todoB.isDone) {
+        return -1;
+    }
+
+    if (todoA.isDone && todoB.isDone) {
+        return (todoB.finishedAt ?? 0) - (todoA.finishedAt ?? 0);
+    }
+
+    return todoB.createdAt - todoA.createdAt;
+};
 
 export const Title = styled.div`
     font-weight: 800;
@@ -34,7 +50,7 @@ export const Todo = () => {
         return <div>Error: {error.message}</div>;
     }
 
-    const todoItems = data ?? [];
+    const todoItems = data?.sort(compareTodoItems) ?? [];
     const doneItems = data?.filter((item) => item.isDone).length ?? 0;
 
     const onItemAdd = (label: string) => {
