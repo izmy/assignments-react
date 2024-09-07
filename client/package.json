@@ -16,11 +16,13 @@
         "@radix-ui/colors": "^3.0.0",
         "@radix-ui/react-checkbox": "^1.1.0",
         "@radix-ui/react-icons": "^1.3.0",
+        "@tanstack/react-query": "^5.54.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "styled-components": "^6.1.11",
         "styled-normalize": "^8.1.1",
-        "styled-reset": "^4.5.2"
+        "styled-reset": "^4.5.2",
+        "valibot": "^0.41.0"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^8.1.10",
