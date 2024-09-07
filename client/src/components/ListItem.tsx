@@ -1,6 +1,7 @@
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import styled from "styled-components";
 
+import { Button } from "./Button";
 import { Checkbox } from "./Checkbox";
 
 const StyledDiv = styled.div`
@@ -27,12 +28,13 @@ export const ListItem = (props: ListItemProp) => {
         <StyledDiv>
             <Checkbox checked={isDone} onCheckedChange={onItemDoneToggle} />
             <Label>{label}</Label>
-            <button>
-                <TrashIcon />
-            </button>
-            <button onClick={() => onItemDelete()}>
+
+            <Button intent="secondary">
                 <Pencil1Icon />
-            </button>
+            </Button>
+            <Button onClick={() => onItemDelete()} intent="danger">
+                <TrashIcon />
+            </Button>
         </StyledDiv>
     );
 };

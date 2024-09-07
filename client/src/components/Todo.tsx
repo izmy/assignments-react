@@ -13,7 +13,9 @@ export const Todo = () => {
     return (
         <Container>
             <Layout>
-                <Header onItemAdd={() => console.warn("unimplemented")}>To Do app</Header>
+                <Header onItemAdd={() => console.warn("unimplemented")}>
+                    <Title>To Do app 🔥</Title>
+                </Header>
                 <List />
                 <Footer />
             </Layout>

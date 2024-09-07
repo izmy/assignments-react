@@ -1,11 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 
 const FooterStyled = styled.footer`
     display: flex;
+    justify-content: space-between;
 
-    margin-top: 15px;
-    padding-top: 15px;
+    padding-top: 1rem;
 
     border-top: 1px solid;
     border-color: ${(props) => props.theme.colors.olive6};
@@ -21,8 +20,8 @@ export const Footer = (props: FooterProps) => {
 
     return (
         <FooterStyled>
-            Todo: {todoItems}
-            Done: {todoItems}
+            <div>Todo: {todoItems}</div>
+            <div>Done: {doneItems}</div>
         </FooterStyled>
     );
 };

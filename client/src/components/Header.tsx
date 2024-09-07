@@ -1,23 +1,24 @@
 import { PlusIcon } from "@radix-ui/react-icons";
-import React from "react";
+import type React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import { Button } from "./Button";
+import { Form } from "./form";
 
 const StyledDiv = styled.header`
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    button {
-        all: unset;
+    padding-bottom: 1rem;
 
-        width: 25px;
-        height: 25px;
+    border-bottom: 1px solid;
+    border-color: ${(props) => props.theme.colors.olive6};
+`;
 
-        background-color: ${(props) => props.theme.colors.grass9};
-        border: 1px solid;
-        border-color: ${(props) => props.theme.colors.olive9};
-        border-radius: 50%;
-
-        color: #fff;
-    }
+const FormContainer = styled.div`
+    width: 100%;
+    max-width: 20rem;
 `;
 
 type HeaderProps = {
@@ -27,13 +28,29 @@ type HeaderProps = {
 
 export const Header = (props: HeaderProps) => {
     const { children } = props;
+    const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
+
+    const handleItemAdd = (label: string) => {
+        props.onItemAdd(label);
+        setIsCreateFormVisible(false);
+    };
+
+    const handleCancelForm = () => {
+        setIsCreateFormVisible(false);
+    };
 
     return (
         <StyledDiv>
             <h1>{children}</h1>
-            <button>
-                <PlusIcon />
-            </button>
+            {isCreateFormVisible ? (
+                <FormContainer>
+                    <Form initialValue="" onSubmit={handleItemAdd} onCancel={handleCancelForm} />
+                </FormContainer>
+            ) : (
+                <Button onClick={() => setIsCreateFormVisible(true)} intent="primary" rounded>
+                    <PlusIcon />
+                </Button>
+            )}
         </StyledDiv>
     );
 };

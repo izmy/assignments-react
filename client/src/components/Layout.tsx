@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
+/**
+ * B2: Fix the Layout component so the Footer is always attached to the bottom of the Layout.
+ * There is no need to change when I set List component to flex: auto.
+ */
 export const Layout = styled.main`
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
     width: 100%;
     max-width: 600px;
