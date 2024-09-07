@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import type { TodoItem } from "./api/TodoApi";
 
 const ListStyled = styled.div`
     display: flex;
@@ -23,10 +24,26 @@ const ListNoItems = styled.div`
     }
 `;
 
-export const List = () => {
+type ListProps = {
+    items: TodoItem[];
+};
+
+export const List = (props: ListProps) => {
+    const { items } = props;
+
+    if (items.length === 0) {
+        return (
+            <ListNoItems>
+                <i>No items</i> 🙌
+            </ListNoItems>
+        );
+    }
+
     return (
-        <ListNoItems>
-            <i>No items</i> 🙌
-        </ListNoItems>
+        <ListStyled>
+            {items.map((item) => (
+                <div key={item.id}>{item.label}</div>
+            ))}
+        </ListStyled>
     );
 };
